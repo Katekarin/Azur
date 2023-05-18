@@ -11,13 +11,21 @@
             width:60vw;
             height:60vh;
             margin-top: 20vh;
-            margin-left: 20vw
+            margin-left: 20vw;
+        }
+        .menu{
+            display: inline-block;
+            margin-left: 1%;
         }
     </style>
 </head>
 <body>
     <div class='site'>
-        <h1>Welcome on my site</h1>
+        <h1>Index/h1>
+        <div class="menu"><a href="{{ url_for('index') }}">Back to Home</a></div>
+        <div class="menu"><a href="{{ url_for('about') }}">About me</a></div>
+
+        <img src="{{ url_for('static', filename='cat.jpg') }}" alt="Cat"><br>
     </dive>
 </body>
 </html>
