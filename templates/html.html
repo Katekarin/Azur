@@ -5,27 +5,146 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        body{
+            background-color: rgb(33, 33, 38);
+            font-size: 1em;
+            color:white;
+            font-weight: 600;
+        }
         .site {
-            background:rgba(225, 225, 225, 0.65);
-            width:60vw;
-            height:60vh;
-            margin-top: 20vh;
-            margin-left: 20vw;
+            width:98vw;
+            height:96vh;
+            margin-top: 1.5vh;
+            margin-left: 0.5vw;
+            padding:0.5%;
+            box-sizing: border-box;
+            display: inline-block;
+            display: flex;
+
         }
         .menu{
-            display: inline-block;
             margin-left: 1%;
+        }
+        #menu{
+            width:15%;
+            height: 100%;
+            background: rgba(33, 33, 33);
+            border: solid rgba(25,25,25) 1px;
+            box-shadow: inset 0 0 10px rgb(0, 190, 225);
+
+        }
+        .img{
+            border-radius: 50%;
+            width:100px;
+            height: 100px;
+            background:white;
+            margin: auto;
+            margin-top: 2.5vh;
+        }
+        .img > img {
+            border-radius: 50%;
+        }
+        .site > * {
+            text-align: center;
+        }
+        li{
+            list-style-type:none;
+        }
+        .hr {
+            border-bottom: 1px #888 solid;
+            margin-left: 5%;
+            width:90%;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            box-shadow: 0px 4px 6px -3px black;
+        }
+        a{
+            line-height: 175%;
+            color: rgb(125, 125, 225);
+        }
+
+
+
+
+        #banner{
+            width:85%;
+            height: 100%;
+            border:solid white 1px;
+            margin-left: 5%;
+        }
+        .banner{
+            margin: auto;
+            padding: 2%;
+            width:100%;
+            height:33%;
+            border: solid white 1px;
+            box-sizing: border-box;
+            font-size: 28px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
     <div class='site'>
-        <h1>Index/h1>
-        <div class="menu"><a href="{{ url_for('index') }}">Back to Home</a></div>
-        <div class="menu"><a href="{{ url_for('about') }}">About me</a></div>
 
-        <img src="{{ url_for('static', filename='cat.jpg') }}" alt="Cat"><br>
-    </dive>
+    <div id="menu">
+        <div class="img"> <img src="zdjecie_ak"> </div>
+        <p>
+            Adam Kwika <br>
+            Front-end developer
+        </p>
+        <div class="hr"></div>
+        <p>
+            Country: Poland <br>
+            City: Wroclaw <br>
+            Age:24
+        </p>
+        <div class="hr"></div>
+        <p>
+            Polish: Native<br>
+            English: Good
+        </p>
+        <div class="hr"></div>
+        <p>
+            HTML5<br>
+            CSS<br>
+            Java script<br>
+            Wordpress<br>
+            SQL <br>
+            php - beginer <br>
+            python - beginer
+        </p>
+        <div class="hr"></div>
+        <p>
+            <li><div class="menu"><a href="{{ url_for('index') }}">Home</a></div></li>
+            <li><div class="menu"><a href="{{ url_for('about') }}">About me</a></div></li>
+            <li><div class="menu"><a href="{{ url_for('project') }}">My projects</a></div></li>
+        </p>
+        <div class="hr"></div>
+        <p>
+            Contact:<br>
+            <a href = "mailto: kwikaadam@gmail.com">Send Email</a> <br>
+            <a href="tel:+48732211111">+48 732 211 111</a> <br>
+        </p>
+        <div class="hr"></div>
+        <p>
+            Download CV
+        </p>
+    </div>
+
+    <div id="banner">
+
+        <div class="banner">
+            <h2>Discover my original<br> work space</h2>
+        </div>
+
+
+    </div>
+
+    </div>
+
+    
 </body>
 </html>
