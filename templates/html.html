@@ -12,6 +12,7 @@
             font-size: 1em;
             color:white;
             font-weight: 600;
+            overflow: hidden;
         }
         .site {
             width:98vw;
@@ -32,8 +33,7 @@
             height: 100%;
             background: rgba(33, 33, 33);
             border: solid rgba(25,25,25) 1px;
-            box-shadow: inset 0 0 10px rgb(0, 190, 225);
-
+            animation: boxShadow 10s infinite;
         }
         .img{
             border-radius: 50%;
@@ -68,21 +68,65 @@
 
 
 
-        #banner{
+        #article{
             width:85%;
             height: 100%;
-            border:solid white 1px;
             margin-left: 5%;
         }
         .banner{
             margin: auto;
             padding: 2%;
-            width:100%;
-            height:33%;
+            width:99%;
+            height:22%;
             border: solid white 1px;
             box-sizing: border-box;
             font-size: 28px;
             text-align: left;
+            animation: boxShadow 10s infinite;
+            background: #222;
+        }
+
+        #front {
+            border: solid white 1px;
+            width:100%;
+            height: 69.5%;
+            margin-top: 5%;
+            animation: boxShadow 10s infinite;
+            background: rgba(100, 225, 175, 0.055);
+        }
+
+
+
+        i.snowflake {
+            position: absolute;
+            top: -50px;
+            animation: snow linear;
+            z-index: -1;
+            overflow: hidden;
+            }
+            /* Do płatków śniegu wykorzystamy tagi <i> z klasą "snowflake".
+            Samą ikoną płatku śniegu zajmiemy się w JS-ie.  */
+            
+
+        @keyframes snow {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+
+        @keyframes boxShadow {
+            0% {
+                box-shadow: inset 0 0 10px rgb(0, 225, 175);
+                border: solid 1px rgb(0, 225, 175);
+            }
+            50% {
+                box-shadow: inset 0 0 10px rgb(0, 175, 225);
+                border: solid 1px rgb(0, 175, 225);
+            }
+            100% {
+                box-shadow: inset 0 0 10px rgb(0, 225, 175);
+                border: solid 1px rgb(0, 225, 175);
+            }
         }
     </style>
 </head>
@@ -108,19 +152,21 @@
         </p>
         <div class="hr"></div>
         <p>
-            HTML5<br>
-            CSS<br>
-            Java script<br>
-            Wordpress<br>
-            SQL <br>
-            php - beginer <br>
-            python - beginer
+            <li>HTML5</li>
+            <li>CSS</li>
+            <li>Java script</li>
+            <li>Wordpress</li>
+            <li>SQL </li>
+            <li>php - beginer </li>
+            <li>python - beginer</li>
         </p>
         <div class="hr"></div>
         <p>
-            <li><div class="menu"><a href="{{ url_for('index') }}">Home</a></div></li>
-            <li><div class="menu"><a href="{{ url_for('about') }}">About me</a></div></li>
-            <li><div class="menu"><a href="{{ url_for('project') }}">My projects</a></div></li>
+            <li><div class="menu" onclick="indexShow()"><a href="#">Home</a></div></li>
+            <div class="menu" onclick="aboutShow()"><a href="#">About me</a></div></li>
+            <div class="menu" onclick="projectsShow()"><a href="#">my Projects</a></div></li>
+            <div class="menu" onclick="experienceShow()"><a href="#">my Experience</a></div></li>
+            <!-- <li><div class="menu" onclick="aboutShow()"><a href="{{ url_for('about') }}">About me</a></div></li> -->
         </p>
         <div class="hr"></div>
         <p>
@@ -134,12 +180,15 @@
         </p>
     </div>
 
-    <div id="banner">
+    <div id="article">
 
         <div class="banner">
             <h2>Discover my original<br> work space</h2>
         </div>
 
+        <div id="front">
+
+        </div>
 
     </div>
 
@@ -147,4 +196,49 @@
 
     
 </body>
+
+<script>
+
+const createSnow = () => {
+	const snowflake = document.createElement('i')
+	snowflake.classList.add('snowflake')
+	snowflake.textContent = '❄️'
+
+	snowflake.style.left = Math.random() * window.innerWidth + 'px'
+	snowflake.style.animationDuration = Math.random() * 5 + 3 + 's'
+	snowflake.style.opacity = Math.random()
+
+	document.body.append(snowflake)
+
+	setTimeout(() => {
+		snowflake.remove()
+	}, 8000)
+}
+
+setInterval(createSnow, 1000)
+
+
+    let index = ["Hello, welcome on my CV-site. <br><br> You entered here, it means you are interested in my person, maybe as potential worker. <br> I'm trying to be front-end developer and right now I'm studying in WSB Merito University"]
+    let about = ["My name is Adam Kwika.<br><br> I'm 24yo student from Wroclaw. Im programming sience high school, I was oing to IT high school nr1 in Wroclaw <br><br> My hobbys in free time include: <br> Board games. <br> Nature.<br> I have an aquarium :).<br> Fantasy books. (I have nice book collection)"]
+    let projects = ["These are my project I done myself: <br><br> <li>Calculator</li> <br> <li>Map generator</li>   <br> <li>Weather Aplication</li> <br> <li>Gra planszowa</li>"]
+    let experience = ["Diplom of TEB education; Programing Mobile Aplications <br><br> Course from Udemy; Kurs WordPress ZEROdoPRO / Strona.Blog.Sklep Krok po Kroku <br><br> Zarządzenie stroną: <a href='http://paulinapiecyk.com'>paulinapiecyk.com </a> "]
+
+    function indexShow() {  
+        document.getElementById("front").innerHTML=" <p> "+ index[0] + " </p> "
+    }
+
+    function aboutShow() {  
+        document.getElementById("front").innerHTML=" <p> "+ about[0] + " </p> "
+    }
+
+    function projectsShow() {
+        document.getElementById("front").innerHTML=" <p> "+ projects[0] + " </p> "
+    }
+
+    function experienceShow() {
+        document.getElementById("front").innerHTML=" <p> "+ experience[0] + " </p> "
+    }
+
+    indexShow()
+</script>
 </html>
