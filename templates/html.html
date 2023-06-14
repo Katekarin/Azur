@@ -7,134 +7,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body{
-            background-color: rgb(33, 33, 38);
-            font-size: 1em;
-            color:white;
-            font-weight: 600;
-            overflow: hidden;
-        }
-        .site {
-            width:98vw;
-            height:96vh;
-            margin-top: 1.5vh;
-            margin-left: 0.5vw;
-            padding:0.5%;
-            box-sizing: border-box;
-            display: inline-block;
-            display: flex;
-
-        }
-        .menu{
-            margin-left: 1%;
-        }
-        #menu{
-            width:15%;
-            height: 100%;
-            background: rgba(33, 33, 33);
-            border: solid rgba(25,25,25) 1px;
-            animation: boxShadow 10s infinite;
-        }
-        .img{
-            border-radius: 50%;
-            width:100px;
-            height: 100px;
-            background:white;
-            margin: auto;
-            margin-top: 2.5vh;
-        }
-        .img > img {
-            border-radius: 50%;
-        }
-        .site > * {
-            text-align: center;
-        }
-        li{
-            list-style-type:none;
-        }
-        .hr {
-            border-bottom: 1px #888 solid;
-            margin-left: 5%;
-            width:90%;
-            padding-top: 1vh;
-            padding-bottom: 1vh;
-            box-shadow: 0px 4px 6px -3px black;
-        }
-        a{
-            line-height: 175%;
-            color: rgb(125, 125, 225);
-        }
 
 
-
-
-        #article{
-            width:85%;
-            height: 100%;
-            margin-left: 5%;
-        }
-        .banner{
-            margin: auto;
-            padding: 2%;
-            width:99%;
-            height:22%;
-            border: solid white 1px;
-            box-sizing: border-box;
-            font-size: 28px;
-            text-align: left;
-            animation: boxShadow 10s infinite;
-            background: #222;
-        }
-
-        #front {
-            border: solid white 1px;
-            width:100%;
-            height: 69.5%;
-            margin-top: 5%;
-            animation: boxShadow 10s infinite;
-            background: rgba(100, 225, 175, 0.055);
-        }
-
-
-
-        i.snowflake {
-            position: absolute;
-            top: -50px;
-            animation: snow linear;
-            z-index: -1;
-            overflow: hidden;
-            }
-            /* Do płatków śniegu wykorzystamy tagi <i> z klasą "snowflake".
-            Samą ikoną płatku śniegu zajmiemy się w JS-ie.  */
-            
-
-        @keyframes snow {
-            to {
-                transform: translateY(110vh);
-            }
-        }
-
-        @keyframes boxShadow {
-            0% {
-                box-shadow: inset 0 0 10px rgb(0, 225, 175);
-                border: solid 1px rgb(0, 225, 175);
-            }
-            50% {
-                box-shadow: inset 0 0 10px rgb(0, 175, 225);
-                border: solid 1px rgb(0, 175, 225);
-            }
-            100% {
-                box-shadow: inset 0 0 10px rgb(0, 225, 175);
-                border: solid 1px rgb(0, 225, 175);
-            }
-        }
+        /* Dorobić przesuwanie za myszką banera */
     </style>
 </head>
 <body>
     <div class='site'>
 
     <div id="menu">
-        <div class="img"> <img src="zdjecie_ak"> </div>
+        <div class="img"> <img src="zdjecie_ak.jpg"> </div>
         <p>
             Adam Kwika <br>
             Front-end developer
@@ -152,21 +34,21 @@
         </p>
         <div class="hr"></div>
         <p>
-            <li>HTML5</li>
-            <li>CSS</li>
-            <li>Java script</li>
-            <li>Wordpress</li>
-            <li>SQL </li>
-            <li>php - beginer </li>
-            <li>python - beginer</li>
+            HTML5<br>
+            CSS<br>
+            Java script<br>
+            WordPress<br>
+            SQL <br>
+            php - beginner <br>
+            python - beginner
         </p>
         <div class="hr"></div>
         <p>
-            <li><div class="menu" onclick="indexShow()"><a href="#">Home</a></div></li>
-            <div class="menu" onclick="aboutShow()"><a href="#">About me</a></div></li>
-            <div class="menu" onclick="projectsShow()"><a href="#">my Projects</a></div></li>
-            <div class="menu" onclick="experienceShow()"><a href="#">my Experience</a></div></li>
-            <!-- <li><div class="menu" onclick="aboutShow()"><a href="{{ url_for('about') }}">About me</a></div></li> -->
+            <li><div class="menu" id="home-link" data-href="index.html"><a href="#">Home</a></div></li>
+            <li><div class="menu" id="about-link" data-href="about.html"><a href="#">About me</a></div></li>
+            <li><div class="menu" id="projects-link" data-href="projects.html"><a href="#">My projects</a></div></li>
+            <li><div class="menu" id="experience-link" data-href="experience.html"><a href="#">Experience</a></div></li>
+
         </p>
         <div class="hr"></div>
         <p>
@@ -180,65 +62,46 @@
         </p>
     </div>
 
-    <div id="article">
+    <div id="banner">
 
-        <div class="banner">
+        <div class="banner" title="https://www.vecteezy.com">
             <h2>Discover my original<br> work space</h2>
         </div>
 
-        <div id="front">
-
+        <div class="info">
+            <p>
+                <h3>Home</h3>
+            </p>
         </div>
 
     </div>
 
     </div>
-
-    
 </body>
 
 <script>
-
-const createSnow = () => {
-	const snowflake = document.createElement('i')
-	snowflake.classList.add('snowflake')
-	snowflake.textContent = '❄️'
-
-	snowflake.style.left = Math.random() * window.innerWidth + 'px'
-	snowflake.style.animationDuration = Math.random() * 5 + 3 + 's'
-	snowflake.style.opacity = Math.random()
-
-	document.body.append(snowflake)
-
-	setTimeout(() => {
-		snowflake.remove()
-	}, 8000)
-}
-
-setInterval(createSnow, 1000)
-
-
-    let index = ["Hello, welcome on my CV-site. <br><br> You entered here, it means you are interested in my person, maybe as potential worker. <br> I'm trying to be front-end developer and right now I'm studying in WSB Merito University"]
-    let about = ["My name is Adam Kwika.<br><br> I'm 24yo student from Wroclaw. Im programming sience high school, I was oing to IT high school nr1 in Wroclaw <br><br> My hobbys in free time include: <br> Board games. <br> Nature.<br> I have an aquarium :).<br> Fantasy books. (I have nice book collection)"]
-    let projects = ["These are my project I done myself: <br><br> <li>Calculator</li> <br> <li>Map generator</li>   <br> <li>Weather Aplication</li> <br> <li>Gra planszowa</li>"]
-    let experience = ["Diplom of TEB education; Programing Mobile Aplications <br><br> Course from Udemy; Kurs WordPress ZEROdoPRO / Strona.Blog.Sklep Krok po Kroku <br><br> Zarządzenie stroną: <a href='http://paulinapiecyk.com'>paulinapiecyk.com </a> "]
-
-    function indexShow() {  
-        document.getElementById("front").innerHTML=" <p> "+ index[0] + " </p> "
-    }
-
-    function aboutShow() {  
-        document.getElementById("front").innerHTML=" <p> "+ about[0] + " </p> "
-    }
-
-    function projectsShow() {
-        document.getElementById("front").innerHTML=" <p> "+ projects[0] + " </p> "
-    }
-
-    function experienceShow() {
-        document.getElementById("front").innerHTML=" <p> "+ experience[0] + " </p> "
-    }
-
-    indexShow()
-</script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuLinks = document.querySelectorAll('.menu');
+      var infoDiv = document.querySelector('.info');
+  
+      menuLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var href = this.getAttribute('data-href');
+          
+          fetch(href)
+            .then(function(response) {
+              return response.text();
+            })
+            .then(function(html) {
+              infoDiv.innerHTML = html;
+            })
+            .catch(function(error) {
+              console.log('Wystąpił błąd: ' + error);
+            });
+        });
+      });
+    });
+  </script>
+  
 </html>
