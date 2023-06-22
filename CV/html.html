@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+
+        /* Dorobić przesuwanie za myszką banera */
+    </style>
+</head>
+<body>
+    <div class='site'>
+
+    <div id="menu">
+        <div class="img"> <img src="zdjecie_ak.jpg"> </div>
+        <p>
+            Adam Kwika <br>
+            Front-end developer
+        </p>
+        <div class="hr"></div>
+        <p>
+            Country: Poland <br>
+            City: Wroclaw <br>
+            Age:24
+        </p>
+        <div class="hr"></div>
+        <p>
+            Polish: Native<br>
+            English: Good
+        </p>
+        <div class="hr"></div>
+        <p>
+            HTML5<br>
+            CSS<br>
+            Java script<br>
+            Wordpress<br>
+            SQL <br>
+            php - beginer <br>
+            python - beginer
+        </p>
+        <div class="hr"></div>
+        <p>
+            <li><div class="menu" id="home-link" data-href="index.html"><a href="#">Home</a></div></li>
+            <li><div class="menu" id="about-link" data-href="about.html"><a href="#">About me</a></div></li>
+            <li><div class="menu" id="projects-link" data-href="projects.html"><a href="#">My projects</a></div></li>
+            <li><div class="menu" id="experience-link" data-href="experience.html"><a href="#">Experience</a></div></li>
+
+        </p>
+        <div class="hr"></div>
+        <p>
+            Contact:<br>
+            <a href = "mailto: kwikaadam@gmail.com">Send Email</a> <br>
+            <a href="tel:+48732211111">+48 732 211 111</a> <br>
+        </p>
+        <div class="hr"></div>
+        <p>
+            Download CV
+        </p>
+    </div>
+
+    <div id="banner">
+
+        <div class="banner" title="https://www.vecteezy.com">
+            <h2>Discover my original<br> work space</h2>
+        </div>
+
+        <div class="info">
+            <p>
+                <h3>Home</h3>
+            </p>
+        </div>
+
+    </div>
+
+    </div>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuLinks = document.querySelectorAll('.menu');
+      var infoDiv = document.querySelector('.info');
+  
+      menuLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var href = this.getAttribute('data-href');
+          
+          fetch(href)
+            .then(function(response) {
+              return response.text();
+            })
+            .then(function(html) {
+              infoDiv.innerHTML = html;
+            })
+            .catch(function(error) {
+              console.log('Wystąpił błąd: ' + error);
+            });
+        });
+      });
+    });
+  </script>
+  
+</html>
